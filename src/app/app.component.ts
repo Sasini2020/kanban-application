@@ -23,19 +23,35 @@ const getObservable = (collection: AngularFirestoreCollection<Task>) => {
 })
 export class AppComponent {
  // title = 'kanbanangularapp';
- todo: Task[] = [
-  {
-    title: 'Buy milk',
-    description: 'Go to the store and buy milk'
-  },
-  {
-    title: 'Create a Kanban app',
-    description: 'Using Firebase and Angular create a Kanban app!'
-  }
-];
+  todo = this.store.collection('todo').valueChanges({idField: 'id'});
+  inProgress = this.store.collection('inProgress').valueChanges({idField: 'id'});
+  done = this.store.collection('done').valueChanges({idField: 'id'});
 
-inProgress: Task[] = [];
-  done: Task[] = [];
+  constructor(private dialog: MatDialog, private store: AngularFirestore) {}
+
+  drop(event: CdkDragDrop<Task[]|null>): void {
+    if (event.previousContainer === event.container) {
+      return;
+    }
+    if (!event.container.data || !event.previousContainer.data) {
+      return;
+    }
+    
+    const item = event.previousContainer.data[event.previousIndex];
+    this.store.firestore.runTransaction(() => {
+      return Promise.all([
+        this.store.collection(event.previousContainer.id).doc(item.id).delete(),
+        this.store.collection(event.container.id).add(item)
+      ]);
+    });
+    transferArrayItem(
+      event.previousContainer.data,
+      event.container.data,
+      event.previousIndex,
+      event.currentIndex
+    );
+  }
+  
 
   editTask(list: 'done' | 'todo' | 'inProgress', task: Task): void {
     const dialogRef = this.dialog.open(TaskDialogComponent, {
@@ -46,31 +62,16 @@ inProgress: Task[] = [];
       },
     });
     dialogRef.afterClosed().subscribe((result: TaskDialogResult) => {
-      const dataList = this[list];
-      const taskIndex = dataList.indexOf(task);
+      
       if (result.delete) {
-        dataList.splice(taskIndex, 1);
+        this.store.collection(list).doc(task.id).delete();
       } else {
-        dataList[taskIndex] = task;
+        this.store.collection(list).doc(task.id).update(task);
+
       }
     });
   }
-  drop(event: CdkDragDrop<Task[]|null>): void {
-    if (event.previousContainer === event.container) {
-      return;
-    }
-    if (!event.container.data || !event.previousContainer.data) {
-      return;
-    }
-    transferArrayItem(
-      event.previousContainer.data,
-      event.container.data,
-      event.previousIndex,
-      event.currentIndex
-    );
-  }
-  
-  constructor(private dialog: MatDialog) {}
+ 
 
   newTask(): void {
     const dialogRef = this.dialog.open(TaskDialogComponent, {
@@ -81,6 +82,8 @@ inProgress: Task[] = [];
     });
     dialogRef
       .afterClosed()
-      .subscribe((result: TaskDialogResult) => this.todo.push(result.task));
+      .subscribe((result: TaskDialogResult) => this.store.collection('todo').add(result.task));
   }
 }
+
+
