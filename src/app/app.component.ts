@@ -23,9 +23,9 @@ const getObservable = (collection: AngularFirestoreCollection<Task>) => {
 })
 export class AppComponent {
  // title = 'kanbanangularapp';
-  todo = this.store.collection('todo').valueChanges({idField: 'id'});
-  inProgress = this.store.collection('inProgress').valueChanges({idField: 'id'});
-  done = this.store.collection('done').valueChanges({idField: 'id'});
+  todo = getObservable(this.store.collection('todo'));
+  inProgress = getObservable(this.store.collection('inProgress'));
+  done = getObservable(this.store.collection('done'));
 
   constructor(private dialog: MatDialog, private store: AngularFirestore) {}
 
