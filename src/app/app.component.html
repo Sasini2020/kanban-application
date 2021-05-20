@@ -1,88 +1,41 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-<style>
-  :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  .spacer {
-    flex: 1;
-  }
-
-  .toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-  }
-
-  .toolbar img {
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo:hover {
-    opacity: 0.8;
-  }
-
-
-  @media screen and (max-width: 575px) {
-    svg#rocket-smoke {
-      display: none;
-      visibility: hidden;
-    }
-  }
-</style>
-
-<mat-toolbar className=toolbar color="primary">
+<!-- <mat-toolbar className="toolbar" color="primary">
   <mat-icon>assignment</mat-icon>
-  <span>&nbsp;&nbsp;&nbsp;Kanban Board </span>
-</mat-toolbar>
+      <span>&nbsp;&nbsp;&nbsp;Kanban Board </span>
+</mat-toolbar> -->
 
-<div class="content-wrapper">
-  <button (click)="newTask()" mat-button>
-    <mat-icon>add</mat-icon> Add Task
+
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Kanban Board </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
 
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div></nav>
+
+<div class="content-wrapper">
+  <button (click)="newTask()" mat-raised-button color="primary" className="mat-raised-button">
+    <mat-icon className="mat-icon-2">add_circle_outline</mat-icon> Add new task
+  </button>
  
 <div class="container-wrapper">
   <div class="container">
-    <h2>Backlog</h2>
+    <h1 class="h1">Backlog</h1>
     <mat-card class="list" cdkDropList id="todo" #todoList="cdkDropList" [cdkDropListData]="todo | async" [cdkDropListConnectedTo]="[doneList, inProgressList]"
   (cdkDropListDropped)="drop($event)"
   class="list">
@@ -92,7 +45,7 @@
   </div>
 
   <div class="container">
-    <h2>In progress</h2>
+    <h1 class="h1-2">In progress</h1>
 
     <mat-card
       cdkDropList
@@ -108,7 +61,7 @@
   </div>
 
   <div class="container">
-    <h2>Done</h2>
+    <h1 class="h1-3">Done</h1>
 
     <mat-card
       cdkDropList

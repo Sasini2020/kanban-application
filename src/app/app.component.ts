@@ -19,7 +19,8 @@ const getObservable = (collection: AngularFirestoreCollection<Task>) => {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  
 })
 export class AppComponent {
  // title = 'kanbanangularapp';
@@ -87,3 +88,4 @@ export class AppComponent {
 }
 
 
+export class ToolbarOverviewExample {}

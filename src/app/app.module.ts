@@ -38,7 +38,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     MatInputModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
