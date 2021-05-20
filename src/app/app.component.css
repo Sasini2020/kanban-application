@@ -9,22 +9,28 @@ mat-toolbar {
   .content-wrapper {
     max-width: 1400px;
     margin: auto;
+    background-color: #2E4053;
+
   }
   
   .container-wrapper {
     display: flex;
     justify-content: space-around;
+    background-color: #2E4053;
+
   }
   
   .container {
     width: 400px;
-    margin: 0 25px 25px 0;
+    margin: 0 25px 250px 0;
+    background-color: #2E4053;
   }
   
   .list {
-    border: solid 4px #D15075;
+    /* border: solid 4px #D15075; */
+    /* border-radius: 5px; */
     min-height: 150px;
-    border-radius: 5px;
+
   }
   
   app-new-task {
@@ -52,20 +58,54 @@ mat-toolbar {
     margin-bottom: 40px;
     margin-top: 30px;
   }
-  .h1{
+  .h1-1{
     text-align: center;
-    color:#D15075;
+    color: white;
     font-weight: bold;
-  }
+    background-color:#F1C40F;
+    margin-bottom: 0px;
+    border-radius: 5px;
+    font-size: 20px;
+   }
   .h1-2{
     text-align: center;
-    color: #AF7AC5;
+    /* color: #AF7AC5; */
+    color: white;
     font-weight: bold;
+    background-color:#48C9B0;
+    margin-bottom: 0px;
+    border-radius: 5px;
+    font-size: 20px;
 
   }
   .h1-3{
     text-align: center;
-    color: #5DADE2;
+    /* color: #5DADE2; */
+    color: white;
     font-weight: bold;
+    background-color: #D35400;
+    margin-bottom: 0px;
+    border-radius: 5px;
+    font-size: 20px;
 
   }
+  .navbar{
+    min-height: 70px;
+    background-image: linear-gradient(to right, #cc2b5e 0%, #753a88 100%);
+    /* background-image: linear-gradient(to right, #ec008c 0%, #fc6767 100%); */
+
+  }
+  .navbar-logo{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    
+  }
+  .nav-link{
+    color: white;
+    font-size: 17px;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  

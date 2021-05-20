@@ -2,12 +2,10 @@
   <mat-icon>assignment</mat-icon>
       <span>&nbsp;&nbsp;&nbsp;Kanban Board </span>
 </mat-toolbar> -->
-
-
-<nav class="navbar navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Kanban Board </a>
+<nav class="navbar">
+  <a class="navbar-logo" href="#"><i class="fas fa-clipboard-list" style="color: white;font-size: 30px;margin-right: 15px;margin-left: 7px;"></i>Kanban Board </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <i class="fas fa-sliders-h" style="color:white;;"></i>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -18,14 +16,9 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
+     
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+   
   </div></nav>
 
 <div class="content-wrapper">
@@ -35,7 +28,7 @@
  
 <div class="container-wrapper">
   <div class="container">
-    <h1 class="h1">Backlog</h1>
+    <mark class="h1-1">&nbsp;&nbsp;&nbsp;Backlog&nbsp;&nbsp;&nbsp;&nbsp;</mark>
     <mat-card class="list" cdkDropList id="todo" #todoList="cdkDropList" [cdkDropListData]="todo | async" [cdkDropListConnectedTo]="[doneList, inProgressList]"
   (cdkDropListDropped)="drop($event)"
   class="list">
@@ -45,7 +38,7 @@
   </div>
 
   <div class="container">
-    <h1 class="h1-2">In progress</h1>
+    <mark class="h1-2">&nbsp;In progress&nbsp;&nbsp;&nbsp;&nbsp;</mark>
 
     <mat-card
       cdkDropList
@@ -61,7 +54,7 @@
   </div>
 
   <div class="container">
-    <h1 class="h1-3">Done</h1>
+    <mark class="h1-3">&nbsp;&nbsp;&nbsp;Done&nbsp;&nbsp;&nbsp;&nbsp;</mark>
 
     <mat-card
       cdkDropList
