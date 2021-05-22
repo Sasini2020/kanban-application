@@ -1,4 +1,4 @@
-# Kanbanan Board Application
+# Kanban Board Application
 
 ## Real-time web kanban board with Firebase and Angular.Implemented its core functionality with Angular and Angular Material, used Firestore for its persistent state.
 
